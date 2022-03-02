@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         
         currencyPicker.delegate = self
         currencyPicker.dataSource = self
-
     }
 }
 

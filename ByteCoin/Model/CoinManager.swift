@@ -45,11 +45,28 @@ struct CoinManager {
                 }
                 
                 if let data = data {
-                    print("Data: \(data)")
+                    parseJSON(data)
                 }
             }
             
             task.resume()
+        }
+    }
+    
+    func parseJSON(_ data: Data) -> CoinModel? {
+        let decoder = JSONDecoder()
+        
+        do {
+            let decodedData = try decoder.decode(CoinData.self, from: data)
+            let rate = decodedData.rate
+            
+            let coinModel = CoinModel(rate: rate)
+            
+            return coinModel
+        } catch {
+            print(error)
+            
+            return nil
         }
     }
 }
