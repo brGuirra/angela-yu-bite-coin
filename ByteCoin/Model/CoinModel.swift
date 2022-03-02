@@ -9,18 +9,20 @@
 import Foundation
 
 struct CoinModel {
-    let rate: Double
+    let price: Double
     
-    var formatedRateAsString: String {
-        let rate = NSNumber(value: self.rate)
+    let currency: String
+    
+    var formatedPriceAsString: String {
+        let price = NSNumber(value: self.price)
         
         let numberFormater = NumberFormatter()
         
         numberFormater.maximumFractionDigits = 2
         numberFormater.numberStyle = .decimal
         
-        let formattedRate = numberFormater.string(from: rate)
+        let formattedPrice = numberFormater.string(from: price)
         
-        return formattedRate ?? ""
+        return formattedPrice ?? ""
     }
 }
